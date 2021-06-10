@@ -1,0 +1,203 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Poppins', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    background-color: $backgroundColor;
+    color: $textColor;
+}
+
+// RESET
+
+a, a:visited{
+    display: block;
+    text-decoration: none;
+    color: $textColor;
+}
+
+li{
+    list-style: none;
+}
+
+span{
+    display: block;
+}
+
+// UTILITIES
+
+.container{
+    width: 600px;
+    max-width: 100%;
+    padding: 0 .500rem;
+    margin: 0 auto;
+}
+
+.box {
+    display: block;
+    width: 100%;
+    border: 1px solid $grayColor;
+    padding: 1rem .800rem;
+    border-radius: 3px;
+}
+
+.wrapper{
+    margin: .900rem 0;
+}
+
+// FLEX
+
+.flex{
+    display: flex !important;
+}
+
+.ai-c{
+    align-items: center !important;
+}
+
+.jc-c{
+    justify-content: center !important;
+}
+
+.jc-sb{
+    justify-content: space-between !important;
+}
+
+// INPUTS
+
+.input{
+    display: block;
+    width: 100%;
+    padding: .900rem .600rem;
+    font-weight: $bold;
+    font-size: .900em;
+    outline: none;
+    appearance: none;
+    border: 1px solid $grayColor;
+    background-color: #FAFAFA;
+    border-radius: 3px;
+}
+
+.input-group{
+    display: block;
+    margin-bottom: .800rem;
+}
+
+// LABELS
+
+.label {
+    display: block;
+    font-weight: $bold;
+    margin: .300rem 0;
+}
+
+// BUTTONS
+
+.btn{
+    display: block;
+    padding: .700rem 2.5rem;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    font-weight: $bold;
+    font-size: .900em;
+    outline: none;
+    appearance: none;
+    border: none;
+    border-radius: 3px;
+}
+
+.btn-primary{
+    background-color: $primaryColor;
+    color: $whiteColor;
+    transition: background-color .3s;
+
+    &:hover{
+        background-color: darken($primaryColor, 4);
+    }
+}
+
+.btn-danger{
+    background-color: $dangerColor;
+    color: $whiteColor;
+    transition: background-color .3s;
+
+    &:hover{
+        background-color: darken($dangerColor, 4);
+    }
+}
+
+// LISTS
+
+.list-group{
+    padding: .300rem 0;
+    
+    .list-item{
+        width: 100%;
+
+        .item-link{
+            border: 1px solid $grayColor;
+            font-weight: $bold;
+            padding: .600rem .900rem;
+            margin: .200rem 0;
+            border-radius: 3px;
+            transition: background-color .3s;
+
+            &:hover{
+                background-color: darken($whiteColor, $amount: 3);
+            }
+
+            .item-title{
+                margin: .300rem 0;
+            }
+            
+            .item-url{
+                margin: .300rem 0;
+                font-size: .800em;
+                color: $primaryColor;
+            }
+        }
+    }
+}
+
+// HEADINGS
+
+.title{
+    margin: .500rem 0;
+}
+
+.title-md{
+    font-size: 1.5rem;
+}
+
+@media (max-width: 500px){
+    .title{
+        font-size: 1.5rem;
+    }
+    
+    .title-md{
+        font-size: 1.3rem;
+    }
+}
+
+// FOOTERS
+
+.footer{
+    background-color: $whiteColor;
+    border-top: 1px solid $grayColor;
+    padding: 1.2em 0;
+    text-align: center;
+    margin-top: 5rem;
+
+    p{
+        font-weight: $bold;
+
+        span{
+            display: inline-block;
+            color: $primaryColor;
+        }
+    }
+}
