@@ -17,34 +17,30 @@
             <div class="box">
                 <div class="input-group">
                     <label for="" class="label">Title web</label>
-                    <input type="text" class="input input-title" id="input-title">
+                    <input type="text" class="input input-title" id="inputTitle" required>
                 </div>
                 <div class="input-group">
                     <label for="" class="label">URL</label>
-                    <input type="text" class="input input-url" id="input-url">
+                    <input type="url" class="input input-url" id="inputUrl" required>
                 </div>
-                <button class="btn btn-primary btn-add">Add to links list</button>
+                <button class="btn btn-primary btn-add" id="btnAdd">Add to links list</button>
             </div>
         </div>
 
         <div class="wrapper">
             <h2 class="title title-md">Links List</h2>
             <ul class="list-group">
-                <li class="list-item">
-                    <a href="" class="item-link">
+                <!-- <li class="list-item flex ai-c">
+                    <div class="flex-1">
                         <span class="item-title">Web Link Example 1</span>
                         <span class="item-url">https://google.com</span>
-                    </a>
-                </li>
-                <li class="list-item">
-                    <a href="" class="item-link">
-                        <span class="item-title">Web Link Example 2</span>
-                        <span class="item-url">https://google.com</span>
-                    </a>
-                </li>
+                    </div>
+                    <div class="flex">
+                        <a href="" class="btn btn-primary btn-visit" id="btnVisit"></a>
+                        <button class="btn btn-danger btn-delete" id="btnDelete"></button>
+                    </div>
+                </li> -->
             </ul>
-
-            <button class="btn btn-danger btn-delete">Deleting from last added</button>
         </div>
     </div>
 
@@ -53,6 +49,8 @@
             <p>Built by <span>Muhammad Pauzi.</span></p>
         </div>
     </footer>
+
+    <script src="./assets/js/app.js"></script>
 </body>
 
 </html>

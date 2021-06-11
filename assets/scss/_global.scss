@@ -48,6 +48,11 @@ span{
     margin: .900rem 0;
 }
 
+.error{
+    color: $dangerColor;
+    font-weight: $bold;
+}
+
 // FLEX
 
 .flex{
@@ -64,6 +69,10 @@ span{
 
 .jc-sb{
     justify-content: space-between !important;
+}
+
+.flex-1{
+    flex: 1;
 }
 
 // INPUTS
@@ -137,29 +146,28 @@ span{
     
     .list-item{
         width: 100%;
+        border: 1px solid $grayColor;
+        font-weight: $bold;
+        padding: .600rem .900rem;
+        margin: .200rem 0;
+        border-radius: 3px;
+        transition: background-color .3s;
+        -webkit-tap-highlight-color: transparent;
 
-        .item-link{
-            border: 1px solid $grayColor;
-            font-weight: $bold;
-            padding: .600rem .900rem;
-            margin: .200rem 0;
-            border-radius: 3px;
-            transition: background-color .3s;
-
-            &:hover{
-                background-color: darken($whiteColor, $amount: 3);
-            }
-
-            .item-title{
-                margin: .300rem 0;
-            }
-            
-            .item-url{
-                margin: .300rem 0;
-                font-size: .800em;
-                color: $primaryColor;
-            }
+        &:hover{
+            background-color: darken($whiteColor, $amount: 3);
         }
+
+        .item-title{
+            margin: .300rem 0;
+        }
+        
+        .item-url{
+            margin: .300rem 0;
+            font-size: .800em;
+            color: $primaryColor;
+        }
+
     }
 }
 
