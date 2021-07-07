@@ -20,7 +20,8 @@
         <div class="container flex jc-sb ai-c">
             <a href="" class="logo">WLM</a>
 
-            <a href="https://github.com/muhammadpauzi/web-links-management" target="_blank" class="link-icon-github">
+            <a href="https://github.com/muhammadpauzi/web-links-management" target="_blank" class="link-icon-github"
+                title="Open source code in github">
                 <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="feather feather-github">
@@ -34,28 +35,50 @@
 
 
     <div class="container">
-        <div class="wrapper form-create-link">
-            <h1 class="title">Web Links Management</h1>
-            <div class="box">
+        <div class="grid-layout">
+            <div class="wrapper form-create-link">
+                <h2 class="title">Add Link</h2>
+                <hr class="devider">
+
                 <div class="input-group">
-                    <label for="inputTitle" class="label">Title web</label>
-                    <input type="text" class="input input-title" id="inputTitle" required>
+                    <label for="inputTitle" class="label">Title link</label>
+                    <input type="text" class="input input-title" id="inputTitle" required placeholder="Enter a title">
                 </div>
                 <div class="input-group">
                     <label for="inputUrl" class="label">URL</label>
-                    <input type="url" class="input input-url" id="inputUrl" required>
+                    <input type="url" class="input input-url" id="inputUrl" required placeholder="https://...">
                 </div>
                 <button class="btn btn-primary btn-add" id="btnAdd">Add to links list</button>
             </div>
-        </div>
 
-        <div class="wrapper">
-            <h2 class="title title-md">Links List</h2>
-            <div class="input-group">
-                <input type="text" class="input" id="inputSearch" placeholder="Enter search keyword...">
-            </div>
-            <ul class="list-group">
-                <!-- <li class="list-item flex ai-c">
+            <div class="wrapper">
+                <h2 class="title">Links List</h2>
+                <hr class="devider">
+
+                <div class="input-group">
+                    <label for="inputSearch" class="label">Search</label>
+                    <div class="grid-input">
+                        <div class="input-search">
+                            <input type=" text" class="input" id="inputSearch" placeholder="Enter keyword...">
+                        </div>
+                        <button class="btn btn-secondary btn-show-filters">Show Filters</button>
+                    </div>
+                </div>
+
+
+                <div class="filters">
+                    <hr class="devider full">
+                    <div class="input-group">
+                        <label for="sortLinks" class="label">Sort links</label>
+                        <select class="input" id="sortLinks">
+                            <option value="0">Newest</option>
+                            <option value="1">Oldest</option>
+                        </select>
+                    </div>
+                </div>
+
+                <ul class="list-group">
+                    <!-- <li class="list-item flex ai-c">
                     <div class="flex-1">
                         <span class="item-title">Web Link Example 1</span>
                         <span class="item-url">https://google.com</span>
@@ -65,9 +88,11 @@
                         <button class="btn btn-danger btn-delete" id="btnDelete"></button>
                     </div>
                 </li> -->
-            </ul>
+                </ul>
+            </div>
         </div>
     </div>
+
 
     <footer class="footer">
         <div class="container">
@@ -75,6 +100,7 @@
         </div>
     </footer>
 
+    <script src="./assets/js/links.js"></script>
     <script src="./assets/js/app.js"></script>
 </body>
 

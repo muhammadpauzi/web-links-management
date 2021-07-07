@@ -30,26 +30,33 @@ span{
 // UTILITIES
 
 .container{
-    width: 600px;
+    width: 1200px;
     max-width: 100%;
     padding: 0 .500rem;
     margin: 0 auto;
-}
-
-.box {
-    display: block;
-    width: 100%;
-    border: 1px solid $grayColor;
-    padding: 1rem .800rem;
-    border-radius: 3px;
 }
 
 .wrapper{
     margin: .900rem 0;
 }
 
+.devider{
+    display: block;
+    height: 1px;
+    background-color: $grayColor;
+    border: none;
+    margin: .200rem 0 1rem 0;
+    width: 20px;
+    
+    &.full{
+        width: 100%;
+    }
+}
+
 .error{
     color: $dangerColor;
+    text-align: center;
+    padding: 2rem 0;
     font-weight: $bold;
 }
 
@@ -90,7 +97,6 @@ span{
     font-weight: $bold;
     font-size: .900em;
     outline: none;
-    appearance: none;
     border: 1px solid $grayColor;
     background-color: #FAFAFA;
     border-radius: 3px;
@@ -113,7 +119,7 @@ span{
 
 .btn{
     display: block;
-    padding: .700rem 2.5rem;
+    padding: .700rem .500rem;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
@@ -132,6 +138,16 @@ span{
 
     &:hover{
         background-color: darken($primaryColor, 4);
+    }
+}
+
+.btn-secondary{
+    background-color: $grayColor;
+    color: $textColor;
+    transition: background-color .3s;
+
+    &:hover{
+        background-color: darken($grayColor, 4);
     }
 }
 
@@ -175,17 +191,22 @@ span{
             color: $primaryColor;
         }
 
+        .item-created{
+            margin: .300rem 0;
+            background-color: $grayColor;
+            padding: .300rem .400rem;
+            font-size: .800em;
+            display: inline;
+            color: $textColor
+        }
+
     }
 }
 
 // HEADINGS
 
 .title{
-    margin: .500rem 0;
-}
-
-.title-md{
-    font-size: 1.5rem;
+    margin-bottom: .500rem;
 }
 
 @media (max-width: 500px){
