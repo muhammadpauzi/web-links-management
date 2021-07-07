@@ -2,12 +2,14 @@ const inputTitle = document.getElementById('inputTitle');
 const inputUrl = document.getElementById('inputUrl');
 const btnAdd = document.getElementById('btnAdd');
 const listGroup = document.querySelector('.list-group');
+const inputSearch = document.getElementById('inputSearch');;
 
 const addEventHandle = () => {
     const body = {
         id: '000' + Math.floor(Math.random() * 1000) + 1000 + Date.now(),
         title: inputTitle.value,
-        url: inputUrl.value
+        url: inputUrl.value,
+        created_at: Date.now()
     }
     if (!inputTitle.checkValidity()) {
         return inputTitle.reportValidity();
@@ -27,6 +29,9 @@ const clearInput = () => {
     inputUrl.value = '';
 }
 
+inputSearch.addEventListener('keyup', (e) => {
+    showList(e.target.value);
+});
 btnAdd.addEventListener('click', addEventHandle);
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('btn-delete')) {
@@ -52,13 +57,27 @@ const add = body => {
     save(data);
 }
 
-const showList = () => {
+const showList = (keyword = null) => {
     const data = findAll();
+    let temp = '';
+    // Search links
+    if (keyword) {
+        data.map(d => {
+            if (d.title.toLowerCase().includes(keyword.toLowerCase())) {
+                temp += createListItem(d);
+            }
+        });
+        // Message not found
+        if (temp === '') {
+            return listGroup.innerHTML = '<p class="error">Links not found.</p>';
+        }
+    } else {
+        data.map(d => temp += createListItem(d));
+    }
+    // Message not found
     if (!data || data.length <= 0) {
         return listGroup.innerHTML = '<p class="error">Links not added yet.</p>';
     }
-    let temp = '';
-    data.forEach(d => temp += createListItem(d));
     listGroup.innerHTML = temp;
 }
 

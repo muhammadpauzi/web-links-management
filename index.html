@@ -20,9 +20,9 @@
         <div class="container flex jc-sb ai-c">
             <a href="" class="logo">WLM</a>
 
-            <a href="https://github.com/muhammadpauzi/web-links-management" target="_blank" class="link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000"
-                    stroke="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"
+            <a href="https://github.com/muhammadpauzi/web-links-management" target="_blank" class="link-icon-github">
+                <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="feather feather-github">
                     <path
                         d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
@@ -38,11 +38,11 @@
             <h1 class="title">Web Links Management</h1>
             <div class="box">
                 <div class="input-group">
-                    <label for="" class="label">Title web</label>
+                    <label for="inputTitle" class="label">Title web</label>
                     <input type="text" class="input input-title" id="inputTitle" required>
                 </div>
                 <div class="input-group">
-                    <label for="" class="label">URL</label>
+                    <label for="inputUrl" class="label">URL</label>
                     <input type="url" class="input input-url" id="inputUrl" required>
                 </div>
                 <button class="btn btn-primary btn-add" id="btnAdd">Add to links list</button>
@@ -51,6 +51,9 @@
 
         <div class="wrapper">
             <h2 class="title title-md">Links List</h2>
+            <div class="input-group">
+                <input type="text" class="input" id="inputSearch" placeholder="Enter search keyword...">
+            </div>
             <ul class="list-group">
                 <!-- <li class="list-item flex ai-c">
                     <div class="flex-1">
