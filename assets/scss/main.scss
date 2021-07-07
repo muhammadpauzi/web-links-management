@@ -10,7 +10,18 @@
 }
 
 .form-create-link{
-    margin-bottom: 2rem;
+    position: sticky;
+    height: 100vh;
+    top: 0;
+}
+
+.my-name{
+    display: inline-block;
+    color: $primaryColor !important;
+
+    &:hover{
+        text-decoration: underline;
+    }
 }
 
 .link-icon-github{
@@ -29,24 +40,33 @@
     gap: 10px;
 }
 
-
-@media screen and(max-width: 800px){
-    .container{
-        width: 600px;
-    }
-
-    .grid-layout{
-        grid-template-columns: 1fr;
-    }
-
-    .grid-input{
-        grid-template-columns: 1fr;
-    }
-}
-
 .btn-add{
     width: 100%;
     margin-top: 1.4rem;
+}
+
+.btn-back-to-top{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 50px;
+    height: 50px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: box-shadow .3s;
+    background-color: $primaryColor;
+    cursor: pointer;
+    color: white;
+
+    &.show{
+        display: flex;
+    }
+
+    &:hover{
+        box-shadow: 0 5px 10px rgba($primaryColor, .5);
+    }
 }
 
 .filters{
@@ -71,4 +91,30 @@
     background-position: center;
     background-size: 25px 21px;
     padding: 1.2rem;
+}
+
+@media screen and(max-width: 800px){
+    .container{
+        width: 600px;
+    }
+
+    .grid-layout{
+        grid-template-columns: 1fr;
+    }
+
+    .grid-input{
+        grid-template-columns: 1fr;
+    }
+
+    .form-create-link{
+        position: static;
+        height: auto;
+    }
+}
+
+@media screen and(max-width: 500px){
+    .btn-back-to-top{
+        bottom: 20px;
+        right: 20px;
+    }
 }

@@ -39,16 +39,20 @@
             <div class="wrapper form-create-link">
                 <h2 class="title">Add Link</h2>
                 <hr class="devider">
+                <form action="" id="formAddLink">
 
-                <div class="input-group">
-                    <label for="inputTitle" class="label">Title link</label>
-                    <input type="text" class="input input-title" id="inputTitle" required placeholder="Enter a title">
-                </div>
-                <div class="input-group">
-                    <label for="inputUrl" class="label">URL</label>
-                    <input type="url" class="input input-url" id="inputUrl" required placeholder="https://...">
-                </div>
-                <button class="btn btn-primary btn-add" id="btnAdd">Add to links list</button>
+                    <div class="input-group">
+                        <label for="inputTitle" class="label">Title link</label>
+                        <input type="text" class="input input-title" id="inputTitle" name="inputTitle" required
+                            placeholder="Enter a title">
+                    </div>
+                    <div class="input-group">
+                        <label for="inputUrl" class="label">URL</label>
+                        <input type="url" class="input input-url" id="inputUrl" name="inputUrl" required
+                            placeholder="https://...">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-add" id="btnAdd">Add to links list</button>
+                </form>
             </div>
 
             <div class="wrapper">
@@ -59,7 +63,7 @@
                     <label for="inputSearch" class="label">Search</label>
                     <div class="grid-input">
                         <div class="input-search">
-                            <input type=" text" class="input" id="inputSearch" placeholder="Enter keyword...">
+                            <input type=" text" class="input" id="inputSearch" placeholder="Enter keyword..." autofocus>
                         </div>
                         <button class="btn btn-secondary btn-show-filters">Show Filters</button>
                     </div>
@@ -94,9 +98,19 @@
     </div>
 
 
+    <div class="btn-back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="feather feather-chevron-up">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </div>
+
+
     <footer class="footer">
         <div class="container">
-            <p>Built by <span>Muhammad Pauzi.</span></p>
+            <p>Built by <a href="https://github.com/muhammadpauzi" target="_blank" class="my-name">Muhammad Pauzi.</a>
+            </p>
         </div>
     </footer>
 

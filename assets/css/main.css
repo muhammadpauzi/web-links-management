@@ -10,6 +10,7 @@ body {
   min-height: 100vh;
   background-color: #FFF;
   color: #2C3E50;
+  position: relative;
 }
 
 a, a:visited {
@@ -34,6 +35,7 @@ span {
 }
 
 .wrapper {
+  padding-top: 1rem;
   margin: .900rem 0;
 }
 
@@ -248,7 +250,19 @@ span {
 }
 
 .form-create-link {
-  margin-bottom: 2rem;
+  position: -webkit-sticky;
+  position: sticky;
+  height: 100vh;
+  top: 0;
+}
+
+.my-name {
+  display: inline-block;
+  color: #6B4FBB !important;
+}
+
+.my-name:hover {
+  text-decoration: underline;
 }
 
 .link-icon-github {
@@ -271,23 +285,43 @@ span {
   gap: 10px;
 }
 
-@media screen and (max-width: 800px) {
-  .container {
-    width: 600px;
-  }
-  .grid-layout {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-  }
-  .grid-input {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-  }
-}
-
 .btn-add {
   width: 100%;
   margin-top: 1.4rem;
+}
+
+.btn-back-to-top {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 50px;
+  height: 50px;
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  -webkit-transition: -webkit-box-shadow .3s;
+  transition: -webkit-box-shadow .3s;
+  transition: box-shadow .3s;
+  transition: box-shadow .3s, -webkit-box-shadow .3s;
+  background-color: #6B4FBB;
+  cursor: pointer;
+  color: white;
+}
+
+.btn-back-to-top.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.btn-back-to-top:hover {
+  -webkit-box-shadow: 0 5px 10px rgba(107, 79, 187, 0.5);
+          box-shadow: 0 5px 10px rgba(107, 79, 187, 0.5);
 }
 
 .filters {
@@ -312,5 +346,30 @@ span {
   background-position: center;
   background-size: 25px 21px;
   padding: 1.2rem;
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    width: 600px;
+  }
+  .grid-layout {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .grid-input {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .form-create-link {
+    position: static;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .btn-back-to-top {
+    bottom: 20px;
+    right: 20px;
+  }
 }
 /*# sourceMappingURL=main.css.map */

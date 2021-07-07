@@ -1,16 +1,10 @@
-const addEventHandle = () => {
+const handleAddEvent = function (e) {
+    e.preventDefault();
     const body = {
         id: '000' + Math.floor(Math.random() * 1000) + 1000 + Date.now(),
-        title: inputTitle.value,
-        url: inputUrl.value,
+        title: this.inputTitle.value,
+        url: this.inputUrl.value,
         created_at: Date.now()
-    }
-    if (!inputTitle.checkValidity()) {
-        return inputTitle.reportValidity();
-    }
-
-    if (!inputUrl.checkValidity()) {
-        return inputUrl.reportValidity();
     }
 
     add(body);
@@ -30,7 +24,6 @@ const findAll = (sort) => {
     } else {
         const data = JSON.parse(localStorage.getItem('data'));
         data.sort((a, b) => {
-            console.log(sort)
             if (sort == "0") { // 0 = by newest
                 return b.created_at - a.created_at;
             } else if (sort == "1") {

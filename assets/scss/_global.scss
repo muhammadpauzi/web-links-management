@@ -9,6 +9,7 @@ body{
     min-height: 100vh;
     background-color: $backgroundColor;
     color: $textColor;
+    position: relative;
 }
 
 // RESET
@@ -37,6 +38,7 @@ span{
 }
 
 .wrapper{
+    padding-top: 1rem;
     margin: .900rem 0;
 }
 
