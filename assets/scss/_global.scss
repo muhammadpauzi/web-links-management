@@ -53,6 +53,12 @@ span{
     font-weight: $bold;
 }
 
+.logo{
+    color: $primaryColor;
+    font-weight: $bold;
+    font-size: 1.5em;
+}
+
 // FLEX
 
 .flex{
@@ -159,6 +165,7 @@ span{
         }
 
         .item-title{
+            overflow-wrap: anywhere;
             margin: .300rem 0;
         }
         

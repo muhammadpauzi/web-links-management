@@ -50,6 +50,12 @@ span {
   font-weight: 600;
 }
 
+.logo {
+  color: #6B4FBB;
+  font-weight: 600;
+  font-size: 1.5em;
+}
+
 .flex {
   display: -webkit-box !important;
   display: -ms-flexbox !important;
@@ -168,6 +174,7 @@ span {
 }
 
 .list-group .list-item .item-title {
+  overflow-wrap: anywhere;
   margin: .300rem 0;
 }
 
@@ -209,6 +216,19 @@ span {
 .footer p span {
   display: inline-block;
   color: #6B4FBB;
+}
+
+.navbar {
+  width: 100%;
+  padding: 1.5rem 0;
+  background-color: #fcfcfc;
+  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.form-create-link {
+  margin-bottom: 2rem;
 }
 
 .btn-add {
