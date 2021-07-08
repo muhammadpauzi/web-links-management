@@ -7,6 +7,9 @@ const sortLinks = document.getElementById('sortLinks');
 const formAddLink = document.getElementById('formAddLink');
 const formImportLinks = document.getElementById('formImportLinks');
 
+linkAlert.lastElementChild.addEventListener('click', function () {
+    linkAlert.style.display = 'none';
+});
 const handleTabs = function (index) {
     const tabItems = document.querySelectorAll('.tabs-group .tab-item');
     tabItems.forEach((item, indexItem) => {
@@ -44,6 +47,7 @@ document.addEventListener('click', (e) => {
         if (confirm("Are you sure to remove this link?")) {
             const id = e.target.dataset.id;
             deleteData(id);
+            showAlert('Link has been deleted.');
         }
     }
 })

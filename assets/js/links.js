@@ -1,7 +1,15 @@
+const linkAlert = document.querySelector('.alert.link-alert');
+
+const showAlert = (message) => {
+    linkAlert.firstElementChild.textContent = message;
+    linkAlert.style.display = 'flex';
+}
+
+
 const handleAddEvent = function (e) {
     e.preventDefault();
     const body = {
-        id: '000' + Math.floor(Math.random() * 1000) + 1000 + Date.now(),
+        id: generateId(),
         title: this.inputTitle.value,
         url: this.inputUrl.value,
         created_at: Date.now()
@@ -10,6 +18,11 @@ const handleAddEvent = function (e) {
     add(body);
     showList();
     clearInput();
+    showAlert('Link has been added.');
+}
+
+const generateId = () => {
+    return '000' + Math.floor(Math.random() * 1000) + 1000 + Date.now();
 }
 
 let jsonFile = null;
@@ -44,10 +57,18 @@ const handleImportLinks = function (e) {
     const reader = new FileReader();
     reader.addEventListener('load', (e) => {
         const links = findAll();
-        console.log(JSON.parse(e.target.result));
-        links.push(...JSON.parse(e.target.result));
+        const importedLinks = JSON.parse(e.target.result);
+        links.map(link => {
+            importedLinks.map(importedLink => {
+                if (link.id == importedLink.id) {
+                    importedLink.id = generateId();
+                }
+            })
+        });
+        links.push(...importedLinks);
         save(links);
         showList();
+        showAlert('Link has been imported.');
     });
     reader.readAsBinaryString(file);
 }

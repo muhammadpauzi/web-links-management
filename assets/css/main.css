@@ -124,6 +124,33 @@ span {
   margin-bottom: .800rem;
 }
 
+.alert {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  padding: 1.2rem 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.alert .close {
+  cursor: pointer;
+}
+
+.alert-success {
+  background-color: rgba(9, 195, 114, 0.2);
+  color: #09b96c;
+  border: 1px solid #09b96c;
+}
+
 .label {
   display: block;
   font-weight: 600;

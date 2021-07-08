@@ -122,6 +122,28 @@ span{
     margin-bottom: .800rem;
 }
 
+// ALERT
+.alert{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1.2rem 1rem;
+    font-weight: $bold;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+
+    .close{
+        cursor: pointer;
+    }
+}
+
+.alert-success{
+    background-color: rgba($successColor, .2);
+    color: darken($successColor, 2);
+    border: 1px solid darken($successColor, 2);
+}
+
 // LABELS
 
 .label {
