@@ -86,6 +86,11 @@
     margin-right: .200rem;
     padding: 1em !important;
     height: fit-content;
+    color: $whiteColor
+}
+
+.btn-visit:visited{
+    color: $whiteColor;
 }
 
 .btn-delete{

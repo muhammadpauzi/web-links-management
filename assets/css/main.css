@@ -363,6 +363,11 @@ span {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  color: #FFF;
+}
+
+.btn-visit:visited {
+  color: #FFF;
 }
 
 .btn-delete {
