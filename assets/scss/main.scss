@@ -3,7 +3,7 @@
 
 .navbar{
     width: 100%;
-    padding: 1.5rem 0;
+    padding: .500rem 0;
     background-color: darken($whiteColor, 1);
     box-shadow: 0 2px 3px rgba(0,0,0,.05);
     margin-bottom: 2rem;
@@ -25,7 +25,8 @@
 }
 
 .link-icon-github{
-    stroke: $textColor;
+    color: $textColor;
+    font-size: 2rem;
 }
 
 .grid-layout{

@@ -59,7 +59,7 @@ span {
 }
 
 .logo {
-  color: #6B4FBB;
+  color: #6B4FBB !important;
   font-weight: 600;
   font-size: 1.5em;
 }
@@ -226,6 +226,10 @@ span {
   }
 }
 
+.text-primary {
+  color: #6B4FBB !important;
+}
+
 .footer {
   background-color: #FFF;
   border-top: 1px solid #EAEAEA;
@@ -245,7 +249,7 @@ span {
 
 .navbar {
   width: 100%;
-  padding: 1.5rem 0;
+  padding: .500rem 0;
   background-color: #fcfcfc;
   -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
           box-shadow: 0 2px 3px rgba(0, 0, 0, 0.05);
@@ -269,7 +273,8 @@ span {
 }
 
 .link-icon-github {
-  stroke: #2C3E50;
+  color: #2C3E50;
+  font-size: 2rem;
 }
 
 .grid-layout {
