@@ -2,9 +2,11 @@ const listGroup = document.querySelector('.list-group');
 const inputSearch = document.getElementById('inputSearch');
 const btnShowFilters = document.querySelector('.btn-show-filters');
 const filters = document.querySelector('.filters');
+const btnExport = document.querySelector('.btn-export');
 const btnBackToTop = document.querySelector('.btn-back-to-top');
 const sortLinks = document.getElementById('sortLinks');
 const formAddLink = document.getElementById('formAddLink');
+const formImportLinks = document.getElementById('formImportLinks');
 
 window.addEventListener('scroll', () => {
     if (window.scrollY != 0) {
@@ -13,7 +15,9 @@ window.addEventListener('scroll', () => {
         btnBackToTop.classList.remove('show');
     }
 });
+btnExport.addEventListener('click', handleExportLinks);
 formAddLink.addEventListener('submit', handleAddEvent);
+formImportLinks.addEventListener('submit', handleImportLinks);
 btnBackToTop.addEventListener('click', () => {
     scrollTo({
         behavior: 'smooth',

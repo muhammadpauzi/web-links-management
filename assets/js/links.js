@@ -12,15 +12,53 @@ const handleAddEvent = function (e) {
     clearInput();
 }
 
+let jsonFile = null;
+const handleExportLinks = () => {
+    // get current links
+    const links = findAll();
+    // convert links to blob with the type of json
+    const data = new Blob([JSON.stringify(links)], { type: "application/json" });
+    // Avoid memory leaks
+    if (jsonFile !== null) {
+        URL.revokeObjectURL(jsonFile);
+    }
+
+    jsonFile = URL.createObjectURL(data);
+    const link = document.createElement('a');
+    link.setAttribute('download', 'links.json');
+    link.href = jsonFile;
+    document.body.appendChild(link);
+
+    window.requestAnimationFrame(function () {
+        const event = new MouseEvent('click');
+        link.dispatchEvent(event);
+        document.body.removeChild(link);
+    });
+}
+
+const handleImportLinks = function (e) {
+    e.preventDefault();
+    const file = this.fileJson.files[0];
+    const reader = new FileReader();
+    reader.addEventListener('load', (e) => {
+        const links = findAll();
+        console.log(JSON.parse(e.target.result));
+        links.push(...JSON.parse(e.target.result));
+        save(links);
+        showList();
+    });
+    reader.readAsBinaryString(file);
+}
+
 const clearInput = () => {
     inputTitle.value = '';
     inputUrl.value = '';
 }
 
-const findAll = (sort) => {
+const findAll = (sort = "0") => {
     if (localStorage.getItem('data') == null) {
         localStorage.setItem('data', '[]');
-        return false;
+        return [];
     } else {
         const data = JSON.parse(localStorage.getItem('data'));
         data.sort((a, b) => {
@@ -40,7 +78,7 @@ const add = body => {
     save(data);
 }
 
-const showList = (keyword = null, sort = '0') => {
+const showList = (keyword = null, sort) => {
     const data = findAll(sort);
     let temp = '';
     // Search links
