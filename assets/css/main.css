@@ -64,8 +64,17 @@ span {
   font-size: 1.5em;
 }
 
+.py-1 {
+  padding-top: .500rem;
+  padding-bottom: .500rem;
+}
+
 .mr-1 {
   margin-right: .500rem;
+}
+
+.mb-2 {
+  margin-bottom: 1rem;
 }
 
 .flex {
@@ -285,12 +294,27 @@ span {
   gap: 20px;
 }
 
-.grid-input {
+.grid-features {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 2fr .5fr;
-      grid-template-columns: 2fr .5fr;
-  gap: 10px;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+}
+
+.grid-import-links {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 1fr;
+      grid-template-columns: 2fr 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 5px;
+}
+
+.tab-item {
+  display: none;
 }
 
 .btn-add {
@@ -333,14 +357,6 @@ span {
           box-shadow: 0 5px 10px rgba(107, 79, 187, 0.5);
 }
 
-.filters {
-  display: none;
-}
-
-.filters.show {
-  display: block;
-}
-
 .btn-visit {
   margin-right: .200rem;
   padding: 1em !important;
@@ -371,10 +387,6 @@ span {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
   }
-  .grid-input {
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-  }
   .form-create-link {
     position: static;
     height: auto;
@@ -385,6 +397,10 @@ span {
   .btn-back-to-top {
     bottom: 20px;
     right: 20px;
+  }
+  .grid-import-links {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
   }
 }
 /*# sourceMappingURL=main.css.map */

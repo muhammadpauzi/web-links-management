@@ -14,26 +14,28 @@ const handleAddEvent = function (e) {
 
 let jsonFile = null;
 const handleExportLinks = () => {
-    // get current links
-    const links = findAll();
-    // convert links to blob with the type of json
-    const data = new Blob([JSON.stringify(links)], { type: "application/json" });
-    // Avoid memory leaks
-    if (jsonFile !== null) {
-        URL.revokeObjectURL(jsonFile);
+    if (confirm('Are you sure to download this file?')) {
+        // get current links
+        const links = findAll();
+        // convert links to blob with the type of json
+        const data = new Blob([JSON.stringify(links)], { type: "application/json" });
+        // Avoid memory leaks
+        if (jsonFile !== null) {
+            URL.revokeObjectURL(jsonFile);
+        }
+
+        jsonFile = URL.createObjectURL(data);
+        const link = document.createElement('a');
+        link.setAttribute('download', 'links.json');
+        link.href = jsonFile;
+        document.body.appendChild(link);
+
+        window.requestAnimationFrame(function () {
+            const event = new MouseEvent('click');
+            link.dispatchEvent(event);
+            document.body.removeChild(link);
+        });
     }
-
-    jsonFile = URL.createObjectURL(data);
-    const link = document.createElement('a');
-    link.setAttribute('download', 'links.json');
-    link.href = jsonFile;
-    document.body.appendChild(link);
-
-    window.requestAnimationFrame(function () {
-        const event = new MouseEvent('click');
-        link.dispatchEvent(event);
-        document.body.removeChild(link);
-    });
 }
 
 const handleImportLinks = function (e) {

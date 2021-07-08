@@ -67,9 +67,18 @@ span{
     font-size: 1.5em;
 }
 
-// MARGIN
+// MARGIN & PADDING
+.py-1{
+    padding-top: .500rem;
+    padding-bottom: .500rem;
+}
+
 .mr-1{
     margin-right: .500rem;
+}
+
+.mb-2{
+    margin-bottom: 1rem;
 }
 
 // FLEX

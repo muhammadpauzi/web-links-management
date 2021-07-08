@@ -57,33 +57,42 @@
 
                 <div class="input-group">
                     <label for="inputSearch" class="label">Search</label>
-                    <div class="grid-input">
-                        <div class="input-search">
-                            <input type=" text" class="input" id="inputSearch" placeholder="Enter keyword..." autofocus>
+                    <div class="input-search">
+                        <input type=" text" class="input" id="inputSearch" placeholder="Enter keyword..." autofocus>
+                    </div>
+                </div>
+
+                <div class="grid-features mb-2">
+                    <button class="btn btn-secondary btn-export" title="Export links to share"><i
+                            class="fa fa-file-export"></i></button>
+                    <button class="btn btn-secondary" onclick="handleTabs(0)" title="Import links"><i
+                            class="fa fa-file-import"></i></button>
+                    <button class="btn btn-secondary" onclick="handleTabs(1)"><i class="fa fa-filter"></i></button>
+                </div>
+
+
+                <div class="tabs-group">
+                    <div class="tab-item">
+                        <form action="" id="formImportLinks" class="grid-import-links py-1">
+                            <input type="file" name="fileJson" accept="application/json" required>
+                            <button type="submit" class="btn btn-secondary btn-import">Import</button>
+                        </form>
+                    </div>
+
+                    <div class="tab-item">
+                        <div class="filters">
+                            <div class="input-group">
+                                <label for="sortLinks" class="label">Sort links</label>
+                                <select class="input" id="sortLinks">
+                                    <option value="0">Newest</option>
+                                    <option value="1">Oldest</option>
+                                </select>
+                            </div>
                         </div>
-                        <button class="btn btn-secondary btn-show-filters">Show Filters</button>
                     </div>
                 </div>
 
-                <div class="flex">
-                    <button class="btn btn-secondary mr-1 btn-export">Export</button>
-                    <form action="" id="formImportLinks">
-                        <input type="file" name="fileJson" accept="application/json" required>
-                        <button type="submit" class="btn btn-secondary btn-import">Import</button>
-                    </form>
-                </div>
 
-
-                <div class="filters">
-                    <hr class="devider full">
-                    <div class="input-group">
-                        <label for="sortLinks" class="label">Sort links</label>
-                        <select class="input" id="sortLinks">
-                            <option value="0">Newest</option>
-                            <option value="1">Oldest</option>
-                        </select>
-                    </div>
-                </div>
 
                 <ul class="list-group">
                     <!-- <li class="list-item flex ai-c">

@@ -1,13 +1,22 @@
 const listGroup = document.querySelector('.list-group');
 const inputSearch = document.getElementById('inputSearch');
 const btnShowFilters = document.querySelector('.btn-show-filters');
-const filters = document.querySelector('.filters');
 const btnExport = document.querySelector('.btn-export');
 const btnBackToTop = document.querySelector('.btn-back-to-top');
 const sortLinks = document.getElementById('sortLinks');
 const formAddLink = document.getElementById('formAddLink');
 const formImportLinks = document.getElementById('formImportLinks');
 
+const handleTabs = function (index) {
+    const tabItems = document.querySelectorAll('.tabs-group .tab-item');
+    tabItems.forEach((item, indexItem) => {
+        if (index !== indexItem) {
+            item.style.display = 'none';
+        } else {
+            item.style.display = 'block';
+        }
+    })
+}
 window.addEventListener('scroll', () => {
     if (window.scrollY != 0) {
         btnBackToTop.classList.add('show');
@@ -26,10 +35,6 @@ btnBackToTop.addEventListener('click', () => {
 });
 sortLinks.addEventListener('change', (e) => {
     showList(null, e.target.value);
-});
-btnShowFilters.addEventListener('click', function () {
-    this.textContent = filters.classList.contains('show') ? 'Show Filters' : 'Hide Filters';
-    filters.classList.toggle('show');
 });
 inputSearch.addEventListener('keyup', (e) => {
     showList(e.target.value);

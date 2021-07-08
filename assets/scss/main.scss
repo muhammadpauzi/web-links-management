@@ -35,10 +35,21 @@
     gap: 20px;
 }
 
-.grid-input{
+.grid-features{
     display: grid;
-    grid-template-columns: 2fr .5fr;
-    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+}
+
+.grid-import-links{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+    gap: 5px;
+}
+
+.tab-item{
+    display: none;
 }
 
 .btn-add{
@@ -71,14 +82,6 @@
     }
 }
 
-.filters{
-    display: none;
-
-    &.show{
-        display: block;
-    }
-}
-
 .btn-visit{
     margin-right: .200rem;
     padding: 1em !important;
@@ -106,10 +109,6 @@
         grid-template-columns: 1fr;
     }
 
-    .grid-input{
-        grid-template-columns: 1fr;
-    }
-
     .form-create-link{
         position: static;
         height: auto;
@@ -120,5 +119,9 @@
     .btn-back-to-top{
         bottom: 20px;
         right: 20px;
+    }
+
+    .grid-import-links{
+        grid-template-columns: 1fr;
     }
 }
