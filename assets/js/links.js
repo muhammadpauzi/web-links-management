@@ -1,7 +1,8 @@
 const linkAlert = document.querySelector('.alert.link-alert');
 
-const showAlert = (message) => {
+const showAlert = (message, color = 'success') => {
     linkAlert.firstElementChild.textContent = message;
+    linkAlert.setAttribute('class', 'alert alert-' + color);
     linkAlert.style.display = 'flex';
 }
 
@@ -54,10 +55,16 @@ const handleExportLinks = () => {
 const handleImportLinks = function (e) {
     e.preventDefault();
     const file = this.fileJson.files[0];
+    if (file.type !== "application/json") {
+        return showAlert('Import failed, File type is not valid.', 'danger');
+    }
     const reader = new FileReader();
     reader.addEventListener('load', (e) => {
         const links = findAll();
         const importedLinks = JSON.parse(e.target.result);
+        if (!importedLinks.id || !importedLinks.title || !importedLinks.created_at || importedLinks.link) {
+            return showAlert('Import failed, Structure content of file is not valid.', 'danger');
+        };
         links.map(link => {
             importedLinks.map(importedLink => {
                 if (link.id == importedLink.id) {

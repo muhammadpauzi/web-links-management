@@ -151,6 +151,12 @@ span {
   border: 1px solid #09b96c;
 }
 
+.alert-danger {
+  background-color: rgba(255, 47, 47, 0.2);
+  color: #ff2525;
+  border: 1px solid #ff2525;
+}
+
 .label {
   display: block;
   font-weight: 600;

@@ -144,6 +144,12 @@ span{
     border: 1px solid darken($successColor, 2);
 }
 
+.alert-danger{
+    background-color: rgba($dangerColor, .2);
+    color: darken($dangerColor, 2);
+    border: 1px solid darken($dangerColor, 2);
+}
+
 // LABELS
 
 .label {
