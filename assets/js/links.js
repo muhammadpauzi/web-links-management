@@ -120,9 +120,9 @@ const createListItem = data => {
                     <span class="item-url">${data.url}</span>
                     <span class="item-created">created at ${new Date(data.created_at).toLocaleString()}</span>
                 </div>
-                <div class="flex">
-                    <a href="${data.url}" class="btn btn-primary btn-visit" id="btnVisit" target="_blank" title="Open link to a new tab"></a>
-                    <button class="btn btn-danger btn-delete" data-id="${data.id}" title="Delete this link"></button>
+                <div class="flex ai-c">
+                    <a href="${data.url}" class="btn btn-primary btn-visit" id="btnVisit" target="_blank" title="Open link to a new tab"><i class="fa fa-link"></i></a>
+                    <button class="btn btn-danger btn-delete" data-id="${data.id}" title="Delete this link"><i class="fa fa-trash"></i></button>
                 </div>
             </li>`;
 }
