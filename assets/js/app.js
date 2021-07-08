@@ -47,6 +47,7 @@ document.addEventListener('click', (e) => {
         if (confirm("Are you sure to remove this link?")) {
             const id = e.target.dataset.id;
             deleteData(id);
+            showList(inputSearch.value, sortLinks.value);
             showAlert('Link has been deleted.');
         }
     }

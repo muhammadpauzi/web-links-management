@@ -62,7 +62,7 @@ const handleImportLinks = function (e) {
     reader.addEventListener('load', (e) => {
         const links = findAll();
         const importedLinks = JSON.parse(e.target.result);
-        if (!importedLinks.id || !importedLinks.title || !importedLinks.created_at || importedLinks.link) {
+        if (!importedLinks.id || !importedLinks.title || !importedLinks.created_at || importedLinks.url) {
             return showAlert('Import failed, Structure content of file is not valid.', 'danger');
         };
         links.map(link => {
@@ -92,10 +92,27 @@ const findAll = (sort = "0") => {
     } else {
         const data = JSON.parse(localStorage.getItem('data'));
         data.sort((a, b) => {
-            if (sort == "0") { // 0 = by newest
-                return b.created_at - a.created_at;
-            } else if (sort == "1") {
-                return a.created_at - b.created_at;
+            switch (sort) {
+                case "0": // by newest
+                    return b.created_at - a.created_at;
+                case "1": // by oldest
+                    return a.created_at - b.created_at;
+                case "2": // by asc title
+                    if (a.title < b.title) {
+                        return -1;
+                    }
+                    if (a.title > b.title) {
+                        return 1;
+                    }
+                    return 0;
+                case "3": // by desc title
+                    if (a.title > b.title) {
+                        return -1;
+                    }
+                    if (a.title < b.title) {
+                        return 1;
+                    }
+                    return 0;
             }
         });
         return data;
@@ -114,7 +131,7 @@ const showList = (keyword = null, sort) => {
     // Search links
     if (keyword) {
         data.map(d => {
-            if (d.title.toLowerCase().includes(keyword.toLowerCase())) {
+            if (d.title.toLowerCase().includes(keyword.toLowerCase()) || d.url.toLowerCase().includes(keyword.toLowerCase())) {
                 temp += createListItem(d);
             }
         });
@@ -136,7 +153,6 @@ const deleteData = id => {
     const data = findAll();
     const newData = data.filter(d => d.id !== id);
     save(newData);
-    showList();
 }
 
 const save = data => {
