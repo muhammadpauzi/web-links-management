@@ -56,15 +56,21 @@ const handleImportLinks = function (e) {
     e.preventDefault();
     const file = this.fileJson.files[0];
     if (file.type !== "application/json") {
-        return showAlert('Import failed, File type is not valid.', 'danger');
+        return showAlert('Import failed, The File type is not valid.', 'danger');
     }
     const reader = new FileReader();
     reader.addEventListener('load', (e) => {
         const links = findAll();
-        const importedLinks = JSON.parse(e.target.result);
-        if (!importedLinks.id || !importedLinks.title || !importedLinks.created_at || importedLinks.url) {
-            return showAlert('Import failed, Structure content of file is not valid.', 'danger');
-        };
+        let importedLinks = JSON.parse(e.target.result);
+        let keys;
+        if (!Array.isArray(importedLinks)) {
+            keys = Object.keys(importedLinks);
+        } else {
+            keys = Object.keys(importedLinks[0]);
+        }
+        if (!keys.includes('id') || !keys.includes('title') || !keys.includes('created_at') || !keys.includes('url')) {
+            return showAlert('Import failed, The file is wrong.', 'danger');
+        }
         links.map(link => {
             importedLinks.map(importedLink => {
                 if (link.id == importedLink.id) {
@@ -78,6 +84,7 @@ const handleImportLinks = function (e) {
         showAlert('Link has been imported.');
     });
     reader.readAsBinaryString(file);
+    this.reset();
 }
 
 const clearInput = () => {
@@ -93,9 +100,9 @@ const findAll = (sort = "0") => {
         const data = JSON.parse(localStorage.getItem('data'));
         data.sort((a, b) => {
             switch (sort) {
-                case "0": // by newest
+                case "0": // by asc date created
                     return b.created_at - a.created_at;
-                case "1": // by oldest
+                case "1": // by desc data created
                     return a.created_at - b.created_at;
                 case "2": // by asc title
                     if (a.title < b.title) {
@@ -167,8 +174,8 @@ const createListItem = data => {
                     <span class="item-created">created at ${new Date(data.created_at).toLocaleString()}</span>
                 </div>
                 <div class="flex ai-c">
-                    <a href="${data.url}" class="btn btn-primary btn-visit" id="btnVisit" target="_blank" title="Open link to a new tab"><i class="fa fa-link"></i></a>
-                    <button class="btn btn-danger btn-delete" data-id="${data.id}" title="Delete this link"><i class="fa fa-trash"></i></button>
+                    <a href="${data.url}" class="btn btn-primary btn-visit" id="btnVisit" target="_blank" title="Open link to a new tab"></a>
+                    <button class="btn btn-danger btn-delete" data-id="${data.id}" title="Delete this link"></button>
                 </div>
             </li>`;
 }

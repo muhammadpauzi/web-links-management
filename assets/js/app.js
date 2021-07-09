@@ -6,17 +6,22 @@ const btnBackToTop = document.querySelector('.btn-back-to-top');
 const sortLinks = document.getElementById('sortLinks');
 const formAddLink = document.getElementById('formAddLink');
 const formImportLinks = document.getElementById('formImportLinks');
+const tabItems = document.querySelectorAll('.tabs-group .tab-item');
 
+// close alert
 linkAlert.lastElementChild.addEventListener('click', function () {
     linkAlert.style.display = 'none';
 });
 const handleTabs = function (index) {
-    const tabItems = document.querySelectorAll('.tabs-group .tab-item');
     tabItems.forEach((item, indexItem) => {
-        if (index !== indexItem) {
+        if (index !== indexItem) { // close other
             item.style.display = 'none';
         } else {
-            item.style.display = 'block';
+            if (item.style.display == 'block') { // for close tab
+                item.style.display = 'none';
+            } else {
+                item.style.display = 'block'; // show tab
+            }
         }
     })
 }
