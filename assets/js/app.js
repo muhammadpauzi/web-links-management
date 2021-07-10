@@ -1,13 +1,3 @@
-const listGroup = document.querySelector('.list-group');
-const inputSearch = document.getElementById('inputSearch');
-const btnShowFilters = document.querySelector('.btn-show-filters');
-const btnExport = document.querySelector('.btn-export');
-const btnBackToTop = document.querySelector('.btn-back-to-top');
-const sortLinks = document.getElementById('sortLinks');
-const formAddLink = document.getElementById('formAddLink');
-const formImportLinks = document.getElementById('formImportLinks');
-const tabItems = document.querySelectorAll('.tabs-group .tab-item');
-
 // close alert
 linkAlert.lastElementChild.addEventListener('click', function () {
     linkAlert.style.display = 'none';
@@ -42,7 +32,7 @@ btnBackToTop.addEventListener('click', () => {
     });
 });
 sortLinks.addEventListener('change', (e) => {
-    showList(null, e.target.value);
+    showList(inputSearch.value, e.target.value);
 });
 inputSearch.addEventListener('keyup', (e) => {
     showList(e.target.value);

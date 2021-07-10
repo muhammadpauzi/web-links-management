@@ -1,3 +1,12 @@
+const listGroup = document.querySelector('.list-group');
+const inputSearch = document.getElementById('inputSearch');
+const btnShowFilters = document.querySelector('.btn-show-filters');
+const btnExport = document.querySelector('.btn-export');
+const btnBackToTop = document.querySelector('.btn-back-to-top');
+const sortLinks = document.getElementById('sortLinks');
+const formAddLink = document.getElementById('formAddLink');
+const formImportLinks = document.getElementById('formImportLinks');
+const tabItems = document.querySelectorAll('.tabs-group .tab-item');
 const linkAlert = document.querySelector('.alert.link-alert');
 
 const showAlert = (message, color = 'success') => {
@@ -5,7 +14,6 @@ const showAlert = (message, color = 'success') => {
     linkAlert.setAttribute('class', 'alert alert-' + color);
     linkAlert.style.display = 'flex';
 }
-
 
 const handleAddEvent = function (e) {
     e.preventDefault();
@@ -17,7 +25,7 @@ const handleAddEvent = function (e) {
     }
 
     add(body);
-    showList();
+    showList(inputSearch.value, sortLinks.value);
     clearInput();
     showAlert('Link has been added.');
 }
@@ -71,6 +79,7 @@ const handleImportLinks = function (e) {
         if (!keys.includes('id') || !keys.includes('title') || !keys.includes('created_at') || !keys.includes('url')) {
             return showAlert('Import failed, The file is wrong.', 'danger');
         }
+        console.log(importedLinks);
         links.map(link => {
             importedLinks.map(importedLink => {
                 if (link.id == importedLink.id) {
@@ -80,7 +89,7 @@ const handleImportLinks = function (e) {
         });
         links.push(...importedLinks);
         save(links);
-        showList();
+        showList(inputSearch.value, sortLinks.value);
         showAlert('Link has been imported.');
     });
     reader.readAsBinaryString(file);
@@ -120,6 +129,8 @@ const findAll = (sort = "0") => {
                         return 1;
                     }
                     return 0;
+                default:
+                    return b.created_at - a.created_at;
             }
         });
         return data;
@@ -134,6 +145,7 @@ const add = body => {
 
 const showList = (keyword = null, sort) => {
     const data = findAll(sort);
+    console.log(keyword, sort);
     let temp = '';
     // Search links
     if (keyword) {
@@ -157,7 +169,7 @@ const showList = (keyword = null, sort) => {
 }
 
 const deleteData = id => {
-    const data = findAll();
+    const data = findAll(sortLinks.value);
     const newData = data.filter(d => d.id !== id);
     save(newData);
 }
