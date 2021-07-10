@@ -289,6 +289,16 @@ span {
   .list-group .list-item {
     padding: .200rem .500rem .400rem .500rem;
   }
+  .list-group .list-item .item-title {
+    margin: .300rem 0;
+    font-size: .800em;
+  }
+  .list-group .list-item .item-url {
+    font-size: .700em;
+  }
+  .list-group .list-item .item-created {
+    font-size: .600em;
+  }
 }
 
 .navbar {

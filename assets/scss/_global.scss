@@ -218,7 +218,7 @@ span{
         border-radius: 3px;
         transition: background-color .3s;
         -webkit-tap-highlight-color: transparent;
-        
+
         .item-title{
             overflow-wrap: anywhere;
             margin: .300rem 0;
@@ -236,7 +236,7 @@ span{
             padding: .300rem .400rem;
             font-size: .800em;
             display: inline;
-            color: $textColor
+            color: $textColor;
         }
 
     }
@@ -286,6 +286,19 @@ span{
     .list-group{
         .list-item{
             padding: .200rem .500rem .400rem .500rem;
+
+            .item-title{
+                margin: .300rem 0;
+                font-size: .800em;
+            }
+            
+            .item-url{
+                font-size: .700em;
+            }
+    
+            .item-created{
+                font-size: .600em;
+            }
         }
     }
 }
