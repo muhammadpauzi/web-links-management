@@ -1,20 +1,118 @@
+import { generateId, add, deleteData, findAll, createListItem, save } from "./utils.js";
+import { btnBackToTop, formAddLink, formImportLinks, btnExport, inputSearch, linkAlert, listGroup, sortLinks } from "./elements.js";
+
+const showAlert = (message, color = 'success') => {
+    linkAlert.firstElementChild.textContent = message;
+    linkAlert.setAttribute('class', 'alert alert-' + color);
+    linkAlert.style.display = 'flex';
+}
+
+const handleAddEvent = function (e) {
+    e.preventDefault();
+    const body = {
+        id: generateId(),
+        title: this.inputTitle.value,
+        url: this.inputUrl.value,
+        created_at: Date.now()
+    }
+
+    add(body);
+    showList(inputSearch.value, sortLinks.value);
+    this.inputTitle.value = '';
+    this.inputUrl.value = '';
+    showAlert('Link has been added.');
+}
+
+let jsonFile = null;
+const handleExportLinks = () => {
+    if (confirm('Are you sure to download this file?')) {
+        // get current links
+        const links = findAll();
+        // convert links to blob with the type of json
+        const data = new Blob([JSON.stringify(links)], { type: "application/json" });
+        // Avoid memory leaks
+        if (jsonFile !== null) {
+            URL.revokeObjectURL(jsonFile);
+        }
+
+        jsonFile = URL.createObjectURL(data);
+        const link = document.createElement('a');
+        link.setAttribute('download', 'links.json');
+        link.href = jsonFile;
+        document.body.appendChild(link);
+
+        window.requestAnimationFrame(function () {
+            const event = new MouseEvent('click');
+            link.dispatchEvent(event);
+            document.body.removeChild(link);
+        });
+    }
+}
+
+const handleImportLinks = function (e) {
+    e.preventDefault();
+    const file = this.fileJson.files[0];
+    if (file.type !== "application/json") {
+        return showAlert('Import failed, The File type is not valid.', 'danger');
+    }
+    const reader = new FileReader();
+    reader.addEventListener('load', (e) => {
+        const links = findAll();
+        let importedLinks = JSON.parse(e.target.result);
+        let keys;
+        if (!Array.isArray(importedLinks)) {
+            keys = Object.keys(importedLinks);
+        } else {
+            keys = Object.keys(importedLinks[0]);
+        }
+        if (!keys.includes('id') || !keys.includes('title') || !keys.includes('created_at') || !keys.includes('url')) {
+            return showAlert('Import failed, The file is wrong.', 'danger');
+        }
+        links.map(link => {
+            importedLinks.map(importedLink => {
+                if (link.id == importedLink.id) {
+                    importedLink.id = generateId();
+                }
+            })
+        });
+        links.push(...importedLinks);
+        save(links);
+        showList(inputSearch.value, sortLinks.value);
+        showAlert('Link has been imported.');
+    });
+    reader.readAsBinaryString(file);
+    this.reset();
+}
+
+const showList = (keyword = null, sort) => {
+    const data = findAll(sort);
+    let temp = '';
+    // Search links
+    if (keyword) {
+        data.map(d => {
+            if (d.title.toLowerCase().includes(keyword.toLowerCase()) || d.url.toLowerCase().includes(keyword.toLowerCase())) {
+                temp += createListItem(d);
+            }
+        });
+        // Message not found
+        if (temp === '') {
+            return listGroup.innerHTML = '<p class="error">Links not found.</p>';
+        }
+    } else {
+        data.map(d => temp += createListItem(d));
+    }
+    // Message not found
+    if (!data || data.length <= 0) {
+        return listGroup.innerHTML = '<p class="error">Links not added yet.</p>';
+    }
+    listGroup.innerHTML = temp;
+}
+
 // close alert
 linkAlert.lastElementChild.addEventListener('click', function () {
     linkAlert.style.display = 'none';
 });
-const handleTabs = function (index) {
-    tabItems.forEach((item, indexItem) => {
-        if (index !== indexItem) { // close other
-            item.style.display = 'none';
-        } else {
-            if (item.style.display == 'block') { // for close tab
-                item.style.display = 'none';
-            } else {
-                item.style.display = 'block'; // show tab
-            }
-        }
-    })
-}
+
 window.addEventListener('scroll', () => {
     if (window.scrollY != 0) {
         btnBackToTop.classList.add('show');

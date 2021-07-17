@@ -34,7 +34,7 @@
             <div class="wrapper form-create-link">
                 <h2 class="title">Add Link</h2>
                 <hr class="devider">
-                <form action="" id="formAddLink">
+                <form id="formAddLink" method="post">
 
                     <div class="input-group">
                         <label for="inputTitle" class="label">Title link</label>
@@ -98,19 +98,8 @@
                     </div>
                 </div>
 
-
-
                 <ul class="list-group">
-                    <!-- <li class="list-item flex ai-c">
-                    <div class="flex-1">
-                        <span class="item-title">Web Link Example 1</span>
-                        <span class="item-url">https://google.com</span>
-                    </div>
-                    <div class="flex">
-                        <a href="" class="btn btn-primary btn-visit" id="btnVisit"></a>
-                        <button class="btn btn-danger btn-delete" id="btnDelete"></button>
-                    </div>
-                </li> -->
+
                 </ul>
             </div>
         </div>
@@ -124,13 +113,29 @@
 
     <footer class="footer">
         <div class="container">
-            <p>Built by <a href="https://github.com/muhammadpauzi" target="_blank" class="my-name">Muhammad Pauzi.</a>
+            <p>Created by <a href="https://github.com/muhammadpauzi" target="_blank" class="my-name">Muhammad Pauzi.</a>
             </p>
         </div>
     </footer>
 
-    <script src="./assets/js/links.js"></script>
-    <script src="./assets/js/app.js"></script>
+    <script type="module" src="./assets/js/app.js"></script>
+    <script>
+        const tabItems = document.querySelectorAll('.tabs-group .tab-item');
+        // handle tabs
+        const handleTabs = function (index) {
+            tabItems.forEach((item, indexItem) => {
+                if (index !== indexItem) { // close other
+                    item.style.display = 'none';
+                } else {
+                    if (item.style.display == 'block') { // for close tab
+                        item.style.display = 'none';
+                    } else {
+                        item.style.display = 'block'; // show tab
+                    }
+                }
+            })
+        }
+    </script>
 </body>
 
 </html>
