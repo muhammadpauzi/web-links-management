@@ -20,6 +20,7 @@
 </head>
 
 <body>
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="container flex jc-sb ai-c">
             <a href="" class="logo" translate="no">savelinks.</i></a>
@@ -30,8 +31,9 @@
             </a>
         </div>
     </nav>
+    <!-- End of navbar -->
 
-
+    <!-- Form add link -->
     <div class="container">
         <div class="grid-layout">
             <div class="wrapper form-create-link">
@@ -53,6 +55,7 @@
                         links list</button>
                 </form>
             </div>
+            <!-- End of form add link -->
 
             <div class="wrapper">
                 <div class="alert alert-success link-alert" style="display: none;">
@@ -77,7 +80,6 @@
                     <button class="btn btn-secondary" onclick="handleTabs(1)"><i class="fa fa-filter"></i></button>
                 </div>
 
-
                 <div class="tabs-group">
                     <div class="tab-item">
                         <form action="" id="formImportLinks" class="grid-import-links py-1">
@@ -101,26 +103,28 @@
                     </div>
                 </div>
 
-                <ul class="list-group">
-
-                </ul>
+                <!-- List link -->
+                <ul class="list-group"></ul>
+                <!-- End of list link -->
             </div>
         </div>
     </div>
 
-
+    <!-- Back to top -->
     <div class="btn-back-to-top">
         <i class="fa fa-chevron-up"></i>
     </div>
 
-
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p>Created by <a href="https://github.com/muhammadpauzi" target="_blank" class="my-name">Muhammad Pauzi.</a>
             </p>
         </div>
     </footer>
+    <!-- Footer -->
 
+    <!-- Scripts -->
     <script type="module" src="./assets/js/app.js"></script>
     <script>
         const tabItems = document.querySelectorAll('.tabs-group .tab-item');
