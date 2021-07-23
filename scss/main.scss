@@ -52,7 +52,7 @@
     display: none;
 }
 
-.btn-add{
+#btnAdd, #btnEdit{
     width: 100%;
     margin-top: 1.4rem;
 }
@@ -82,8 +82,11 @@
     }
 }
 
-.btn-visit, .btn-delete{
+.btn-visit, .btn-delete, .btn-detail, .btn-show-modal-edit{
     padding: 1.4rem !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px 21px;
 }
 
 .btn-visit{
@@ -99,16 +102,32 @@
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FFF' stroke-width='2.3' stroke-linecap='round' stroke-linejoin='round' class='feather feather-trash-2'%3e%3cpolyline points='3 6 5 6 21 6'%3e%3c/polyline%3e%3cpath d='M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2'%3e%3c/path%3e%3cline x1='10' y1='11' x2='10' y2='17'%3e%3c/line%3e%3cline x1='14' y1='11' x2='14' y2='17'%3e%3c/line%3e%3c/svg%3e");
 }
 
-.btn-visit, .btn-delete{
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 25px 21px;
-    padding: 1.2rem;
+.btn-show-modal-edit{
+    margin-right: .200rem;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FFF' stroke-width='2.3' stroke-linecap='round' stroke-linejoin='round' class='feather feather-edit'%3e%3cpath d='M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7'%3e%3c/path%3e%3cpath d='M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z'%3e%3c/path%3e%3c/svg%3e");
 }
 
-@media screen and(max-width: 800px){
+// for dekstop
+.btn-collapse{
+    display: none;
+}
+
+.btn-detail{
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.3' stroke-linecap='round' stroke-linejoin='round' class='feather feather-chevron-down'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+.btn-detail.active{
+    transform: rotate(180deg);
+}
+
+@media screen and(max-width: $medium){
     .container{
         width: 600px;
+    }
+
+    // for mobile or tablet
+    .btn-collapse{
+        display: block;
     }
 
     .grid-layout{
@@ -121,8 +140,9 @@
     }
 }
 
-@media screen and(max-width: 500px){
-    .btn-visit, .btn-delete{
+
+@media screen and(max-width: $small){
+    .btn-visit, .btn-delete, .btn-detail, .btn-show-modal-edit{
         padding: 1.1rem !important;
     }
 

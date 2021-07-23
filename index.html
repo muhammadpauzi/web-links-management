@@ -8,14 +8,14 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./css/main.css">
     <!-- Poppins Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"> -->
     <!-- Font Awesome -->
-    <!-- <script src="./assets//icons/all.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+    <script src="./local/icons/all.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
         integrity="sha512-RXf+QSDCUQs5uwRKaDoXt55jygZZm2V++WUZduaU/Ui/9EGp3f/2KZVahFZBKGH0s774sd3HmrhUy+SgOFQLVQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <title>Web Links Management | savelinks.</title>
 </head>
 
@@ -37,23 +37,25 @@
     <div class="container">
         <div class="grid-layout">
             <div class="wrapper form-create-link">
-                <h2 class="title">Add Link</h2>
-                <hr class="devider">
-                <form id="formAddLink" method="post">
-
-                    <div class="input-group">
-                        <label for="inputTitle" class="label">Title link</label>
-                        <input type="text" class="input input-title" id="inputTitle" name="inputTitle" required
-                            placeholder="Enter a title">
-                    </div>
-                    <div class="input-group">
-                        <label for="inputUrl" class="label">URL</label>
-                        <input type="url" class="input input-url" id="inputUrl" name="inputUrl" required
-                            placeholder="https://...">
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-add" id="btnAdd"><i class="fa fa-plus"></i> Add to
-                        links list</button>
-                </form>
+                <div class="form-collapse" id="formCollapse">
+                    <h2 class="title">Add Link</h2>
+                    <hr class="devider">
+                    <form id="formAddLink" method="post">
+                        <div class="input-group">
+                            <label for="inputTitle" class="label">Title link</label>
+                            <input type="text" class="input input-title" id="inputTitle" name="inputTitle" required
+                                placeholder="Enter a title">
+                        </div>
+                        <div class="input-group">
+                            <label for="inputUrl" class="label">URL</label>
+                            <input type="url" class="input input-url" id="inputUrl" name="inputUrl" required
+                                placeholder="https://...">
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="btnAdd"><i class="fa fa-plus"></i> Add
+                            to links list</button>
+                    </form>
+                </div>
+                <button class="btn btn-secondary btn-sm btn-collapse mt-2" data-target="formCollapse">Hide Form</button>
             </div>
             <!-- End of form add link -->
 
@@ -97,6 +99,8 @@
                                     <option value="1">Date Created (Desc)</option>
                                     <option value="2">Title (Asc)</option>
                                     <option value="3">Title (Desc)</option>
+                                    <option value="4">Date Updated (Asc)</option>
+                                    <option value="5">Date Updated (Desc)</option>
                                 </select>
                             </div>
                         </div>
@@ -106,6 +110,36 @@
                 <!-- List link -->
                 <ul class="list-group"></ul>
                 <!-- End of list link -->
+            </div>
+        </div>
+    </div>
+
+    <div class="backdrop" data-target="modalEdit" id="modalEdit">
+        <div class="container">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 class="title mb-2">Edit Link</h2>
+                    <button class="btn btn-secondary px-2 btn-close-modal" data-target="modalEdit"><i
+                            class="fa fa-times"></i></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formEditLink">
+                        <input type="hidden" id="inputIdEdit" name="inputIdEdit">
+                        <input type="hidden" id="inputCreatedAtEdit" name="inputCreatedAt">
+                        <div class="input-group">
+                            <label for="inputTitleEdit" class="label">Title link</label>
+                            <input type="text" class="input input-title" id="inputTitleEdit" name="inputTitleEdit"
+                                required placeholder="Enter a title">
+                        </div>
+                        <div class="input-group">
+                            <label for="inputUrlEdit" class="label">URL</label>
+                            <input type="url" class="input input-url" id="inputUrlEdit" name="inputUrlEdit" required
+                                placeholder="https://...">
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="btnEdit"><i class="fa fa-edit"></i>
+                            Edit link</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

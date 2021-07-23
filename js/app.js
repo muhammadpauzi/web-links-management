@@ -1,5 +1,5 @@
-import { generateId, add, deleteData, findAll, createListItem, save } from "./utils.js";
-import { btnBackToTop, formAddLink, formImportLinks, btnExport, inputSearch, linkAlert, listGroup, sortLinks } from "./elements.js";
+import { generateId, add, deleteData, findAll, createListItem, save, loadDataLinkEdit, edit, clearDataLinkEdit } from "./utils.js";
+import { btnBackToTop, formAddLink, formImportLinks, btnExport, inputSearch, linkAlert, listGroup, sortLinks, btnCollapse, btnCloseModal, formEditLink } from "./elements.js";
 
 const showAlert = (message, color = 'success') => {
     linkAlert.firstElementChild.textContent = message;
@@ -11,9 +11,10 @@ const handleAddEvent = function (e) {
     e.preventDefault();
     const body = {
         id: generateId(),
-        title: this.inputTitle.value,
-        url: this.inputUrl.value,
-        created_at: Date.now()
+        title: this.inputTitle.value.trim(),
+        url: this.inputUrl.value.trim(),
+        created_at: Date.now(),
+        updated_at: null,
     }
 
     add(body);
@@ -21,6 +22,25 @@ const handleAddEvent = function (e) {
     this.inputTitle.value = '';
     this.inputUrl.value = '';
     showAlert('Link has been added.');
+}
+
+const handleEditEvent = function (e) {
+    e.preventDefault();
+    const body = {
+        id: this.inputIdEdit.value,
+        title: this.inputTitleEdit.value.trim(),
+        url: this.inputUrlEdit.value.trim(),
+        created_at: parseInt(this.inputCreatedAtEdit.value),
+        updated_at: Date.now(),
+    }
+
+    edit(body);
+    showList(inputSearch.value, sortLinks.value);
+    this.inputIdEdit.value = '';
+    this.inputTitleEdit.value = '';
+    this.inputUrlEdit.value = '';
+    showAlert('Link has been edited.');
+    document.querySelector('.backdrop').classList.remove('show');
 }
 
 let jsonFile = null;
@@ -144,6 +164,37 @@ document.addEventListener('click', (e) => {
             showAlert('Link has been deleted.');
         }
     }
-})
+    if (e.target.classList.contains('btn-detail')) {
+        // rotate icon / image
+        e.target.classList.toggle('active');
+        // get element list-detail
+        const elementDetail = e.target.parentElement.parentElement.nextElementSibling;
+        // show element
+        elementDetail.classList.toggle('flex');
+    }
+    if (e.target.classList.contains('btn-show-modal-edit')) {
+        loadDataLinkEdit(e.target.dataset.id);
+        const elementModal = document.getElementById(e.target.dataset.target);
+        elementModal.classList.toggle('show');
+    }
+});
+// handle collapse form
+btnCollapse.addEventListener('click', function () {
+    const targetElementCollapse = document.getElementById(this.dataset.target);
+    if (targetElementCollapse.classList.contains('d-none')) {
+        this.textContent = "Hide Form";
+    } else {
+        this.textContent = "Show Form";
+    }
+    targetElementCollapse.classList.toggle('d-none');
+});
+// hide/close modal
+btnCloseModal.addEventListener('click', function () {
+    const elementModal = document.getElementById(this.dataset.target);
+    clearDataLinkEdit();
+    elementModal.classList.remove('show');
+});
+// handle edit
+formEditLink.addEventListener('submit', handleEditEvent)
 
 showList();
