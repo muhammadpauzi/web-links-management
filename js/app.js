@@ -85,7 +85,7 @@ const handleImportLinks = function (e) {
         } else {
             keys = Object.keys(importedLinks[0]);
         }
-        if (!keys.includes('id') || !keys.includes('title') || !keys.includes('created_at') || !keys.includes('url')) {
+        if (!keys.includes('id') || !keys.includes('title') || !keys.includes('created_at') || !keys.includes('url') || !keys.includes('updated_at')) {
             return showAlert('Import failed, The file is wrong.', 'danger');
         }
         links.map(link => {
