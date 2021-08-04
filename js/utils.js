@@ -46,26 +46,30 @@ const findAll = (sort = "1") => {
                     return 0;
                 case "4": // by asc date updated
                     if (a.updated_at && b.updated_at) {
-                        return -1;
-                    }
-                    if (a.updated_at == null) {
                         return 1;
                     }
-                    if (b.updated_at == null) {
+                    if (a.updated_at == null) {
+                        console.log("sampai a null", a.title)
                         return -1;
+                    }
+                    if (b.updated_at == null) {
+                        console.log("sampai b null", a.title)
+                        return 1;
                     }
                     return 0;
                 case "5": // by desc date updated
                     if (a.updated_at && b.updated_at) {
-                        return 1;
-                    }
-                    if (a.updated_at == null) {
+                        console.log("sampai a dan b tidak null")
                         return -1;
                     }
-                    if (b.updated_at == null) {
+                    if (a.updated_at == null) {
+                        console.log("sampai a null")
                         return 1;
                     }
-                    console.log("sampai")
+                    if (b.updated_at == null) {
+                        console.log("sampai b null")
+                        return -1;
+                    }
                     return 0;
                 default:
                     return b.created_at - a.created_at;
