@@ -1,5 +1,5 @@
-import { generateId, add, deleteData, findAll, createListItem, save, loadDataLinkEdit, edit, clearDataLinkEdit } from "./utils.js";
-import { btnBackToTop, formAddLink, formImportLinks, btnExport, inputSearch, linkAlert, listGroup, sortLinks, btnCollapse, btnCloseModal, formEditLink } from "./elements.js";
+import { generateId, add, deleteData, findAll, createListItem, save, loadDataLinkEdit, edit, clearDataLinkEdit, deleteAll } from "./utils.js";
+import { btnBackToTop, formAddLink, formImportLinks, btnExport, inputSearch, linkAlert, listGroup, sortLinks, btnCollapse, btnCloseModal, formEditLink, btnDeleteAll } from "./elements.js";
 
 const showAlert = (message, color = 'success') => {
     linkAlert.firstElementChild.textContent = message;
@@ -195,6 +195,13 @@ btnCloseModal.addEventListener('click', function () {
     elementModal.classList.remove('show');
 });
 // handle edit
-formEditLink.addEventListener('submit', handleEditEvent)
+formEditLink.addEventListener('submit', handleEditEvent);
+btnDeleteAll.addEventListener('click', () => {
+    if (confirm('Are you sure to delete all links?')) {
+        deleteAll();
+        showList();
+        showAlert('All Links have been deleted.');
+    }
+});
 
 showList();

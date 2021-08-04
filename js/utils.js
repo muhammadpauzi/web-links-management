@@ -45,27 +45,27 @@ const findAll = (sort = "1") => {
                     }
                     return 0;
                 case "4": // by asc date updated
-                    if (!a.updated_at || !b.updated_at) {
-                        console.log(null)
-                        return 1;
-                    }
-                    if (a.updated_at < b.updated_at) {
+                    if (a.updated_at && b.updated_at) {
                         return -1;
                     }
-                    if (a.updated_at > b.updated_at) {
+                    if (a.updated_at == null) {
                         return 1;
+                    }
+                    if (b.updated_at == null) {
+                        return -1;
                     }
                     return 0;
                 case "5": // by desc date updated
-                    if (!a.updated_at || !b.updated_at) {
+                    if (a.updated_at && b.updated_at) {
                         return 1;
                     }
-                    if (a.updated_at > b.updated_at) {
+                    if (a.updated_at == null) {
                         return -1;
                     }
-                    if (a.updated_at < b.updated_at) {
+                    if (b.updated_at == null) {
                         return 1;
                     }
+                    console.log("sampai")
                     return 0;
                 default:
                     return b.created_at - a.created_at;
@@ -78,6 +78,10 @@ const findAll = (sort = "1") => {
 const deleteData = id => {
     const newData = findAll(sortLinks.value).filter(d => d.id !== id);
     save(newData);
+}
+
+const deleteAll = () => {
+    save([]);
 }
 
 const save = data => {
@@ -133,5 +137,6 @@ export {
     deleteData,
     loadDataLinkEdit,
     edit,
-    clearDataLinkEdit
+    clearDataLinkEdit,
+    deleteAll
 }

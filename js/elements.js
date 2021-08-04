@@ -11,3 +11,4 @@ export const btnDetail = document.querySelector('.btn-detail');
 export const btnCloseModal = document.querySelector('.btn-close-modal');
 export const formEditLink = document.getElementById('formEditLink');
 export const btnShowModal = document.querySelectorAll('.btn-show-modal');
+export const btnDeleteAll = document.querySelector('.btn-delete-all');
