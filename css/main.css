@@ -284,9 +284,11 @@ span {
 
 .modal {
   width: 100%;
+  max-width: 700px;
   background-color: #FFF;
   padding: 2rem 1rem;
   border-radius: 4px;
+  margin: auto;
 }
 
 .modal-header {

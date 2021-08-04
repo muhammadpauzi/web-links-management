@@ -16,7 +16,7 @@ const edit = body => {
     save(data);
 }
 
-const findAll = (sort = "0") => {
+const findAll = (sort = "1") => {
     if (localStorage.getItem('data') == null) {
         localStorage.setItem('data', '[]');
         return [];
@@ -25,9 +25,9 @@ const findAll = (sort = "0") => {
         data.sort((a, b) => {
             switch (sort) {
                 case "0": // by asc date created
-                    return b.created_at - a.created_at;
-                case "1": // by desc data created
                     return a.created_at - b.created_at;
+                case "1": // by desc data created
+                    return b.created_at - a.created_at;
                 case "2": // by asc title
                     if (a.title < b.title) {
                         return -1;
@@ -46,7 +46,8 @@ const findAll = (sort = "0") => {
                     return 0;
                 case "4": // by asc date updated
                     if (!a.updated_at || !b.updated_at) {
-                        return -1;
+                        console.log(null)
+                        return 1;
                     }
                     if (a.updated_at < b.updated_at) {
                         return -1;
@@ -56,6 +57,9 @@ const findAll = (sort = "0") => {
                     }
                     return 0;
                 case "5": // by desc date updated
+                    if (!a.updated_at || !b.updated_at) {
+                        return 1;
+                    }
                     if (a.updated_at > b.updated_at) {
                         return -1;
                     }
