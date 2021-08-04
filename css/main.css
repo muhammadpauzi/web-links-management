@@ -521,5 +521,8 @@ span {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
   }
+  .footer p {
+    font-size: .800rem;
+  }
 }
 /*# sourceMappingURL=main.css.map */
